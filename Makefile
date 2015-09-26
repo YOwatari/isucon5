@@ -27,18 +27,9 @@ python:
 	sudo systemctl enable isuxi.python
 
 nginx:
-	sudo /etc/init.d/nginx stop
 	sudo rm -rf /etc/nginx
 	sudo ln -s $(HOME)/isucon5/etc/nginx /etc/nginx
-	sudo /etc/init.d/nginx start
+	sudo /etc/init.d/nginx restart
 
-mysql:
-	sudo /etc/init.d/mysql stop
-	sudo rm -rf /etc/mysql
-	sudo rm -rf /etc/my.cnf
-	sudo ln -s $(HOME)/isucon5/etc/mysql /etc/mysql
-	sudo ln -s $(HOME)/isucon5/etc/my.cnf /etc/my.cnf
-	sudo /etc/init.d/mysql start
-
-init: git app python nginx mysql
+init: git app python nginx
 	@echo "application initial deployed"

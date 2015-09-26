@@ -1,0 +1,9 @@
+[user]
+    email = yyutao88@gmail.com
+    name = Yuta OHWATARI
+[alias]
+    st = status
+    co = checkout
+    ci = commit
+    df = diff
+    br = branch

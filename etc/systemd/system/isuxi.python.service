@@ -1,0 +1,12 @@
+[Unit]
+Description=isuxi-python
+After=syslog.target
+
+[Service]
+WorkingDirectory=/home/isucon/webapp/python
+EnvironmentFile=/home/isucon/env.sh
+ExecStart=/home/isucon/.local/python3/bin/gunicorn -c /home/isucon/isucon5/home/webapp/python/gunicorn.conf.py app:app
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

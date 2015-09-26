@@ -21,6 +21,8 @@ python:
 	sudo rm -rf /etc/systemd/system/isuxi.python.service
 	sudo cp $(HOME)/isucon5/etc/systemd/system/isuxi.python.service /etc/systemd/system/isuxi.python.service
 	sudo mkdir -p /var/log/gunicorn
+	sudo mkdir /var/run/gunicorn
+	sudo chmod 777 /var/run/gunicorn
 	sudo systemctl daemon-reload
 	sudo systemctl stop isuxi.ruby
 	sudo systemctl disable isuxi.ruby
@@ -42,6 +44,8 @@ mysql:
 	sudo cp -r $(HOME)/isucon5/etc/mysql/conf.d/ /etc/mysql/conf.d/
 	sudo cp -r $(HOME)/isucon5/etc/mysql/mysql.conf.d/ /etc/mysql/mysql.conf.d/
 	sudo systemctl start mysql
+	mysql -u root isucon5q -e "ALTER TABLE relations ADD INDEX idx1_one (`one`)"
+	mysql -u root isucon5q -e "ALTER TABLE relations ADD INDEX idx2_another (`another`)"
 
 init: git app mysql python nginx
 	@echo "application initial deployed"

@@ -1,1 +1,2 @@
 home/.ssh/known_hosts
+home/webapp/python/__pycache__/*
